@@ -8,7 +8,7 @@ def create_alx_database(host="localhost", user="root", password="yourpassword"):
         conn = mysql.connector.connect(
             host=host,
             user=user,
-            password=password
+            password=Mu,thi.ma@5196!
         )
 
         cursor = conn.cursor()
@@ -32,4 +32,4 @@ if __name__ == "__main__":
     USER = "yourusername"   # change to your mysql username
     PASSWORD = "yourpassword"   # change to your mysql password
 
-    create_alx_database(host=HOST, user=USER, password=PASSWORD)
+    create_alx_database(host=HOST, user=USER, password=Mu,thi.ma@5196!)
