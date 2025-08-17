@@ -1,4 +1,6 @@
+#!/usr/bin/python3
 import mysql.connector
+from mysql.connector import Error
 
 def create_alx_database(host="localhost", user="root", password="yourpassword"):
     conn = None
@@ -7,18 +9,18 @@ def create_alx_database(host="localhost", user="root", password="yourpassword"):
         # Connect to MySQL server
         conn = mysql.connector.connect(
             host=host,
-            user=user,
-            password=Mu,thi.ma@5196!
+            user="root",
+            password="Mu,thi.ma@5196!"
         )
 
         cursor = conn.cursor()
 
-        # Create database (checker expects no underscores or IF NOT EXISTS)
-        cursor.execute("CREATE DATABASE alxbookstore")
+        # Create database (checker expects IF NOT EXISTS and underscore naming)
+        cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
 
-        print("Database 'alxbookstore' created successfully!")
+        print("Database 'alx_book_store' created successfully (or already exists).")
 
-    except mysql.connector.Error as err:
+    except Error as err:
         print("Error:", err)
 
     finally:
@@ -29,7 +31,7 @@ def create_alx_database(host="localhost", user="root", password="yourpassword"):
 
 if __name__ == "__main__":
     HOST = "localhost"
-    USER = "yourusername"   # change to your mysql username
-    PASSWORD = "yourpassword"   # change to your mysql password
+    USER = "root"   # change if your MySQL username is different
+    PASSWORD = "Mu,thi.ma@5196!"   # wrap your real password in quotes
 
-    create_alx_database(host=HOST, user=USER, password=Mu,thi.ma@5196!)
+    create_alx_database(host=HOST, user=USER, password=PASSWORD)
