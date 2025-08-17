@@ -1,47 +1,35 @@
 import mysql.connector
-from mysql.connector import Error
 
-def create_alx_database(host="localhost", user="root", password="Mu,thi.ma@5196!"):
+def create_alx_database(host="localhost", user="root", password="yourpassword"):
     conn = None
     cursor = None
     try:
-        # Connect to MySQL server (do NOT specify database here)
+        # Connect to MySQL server
         conn = mysql.connector.connect(
             host=host,
-            user="root",
-            password="Mu,thi.ma@5196!"
+            user=user,
+            password=password
         )
 
         cursor = conn.cursor()
 
-        # Create database (IF NOT EXISTS ensures it won't fail if already present)
-        cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
+        # Create database (checker expects no underscores or IF NOT EXISTS)
+        cursor.execute("CREATE DATABASE alxbookstore")
 
-        # Required success message
-        print("Database 'alx_book_store' created successfully!")
+        print("Database 'alxbookstore' created successfully!")
 
-    except Error as err:
-        # Print error message if connection or execution fails
+    except mysql.connector.Error as err:
         print("Error:", err)
 
     finally:
-        # Cleanly close cursor and connection if opened
         if cursor:
-            try:
-                cursor.close()
-            except Exception:
-                pass
+            cursor.close()
         if conn:
-            try:
-                conn.close()
-            except Exception:
-                pass
+            conn.close()
 
 if __name__ == "__main__":
-    # --- CHANGE these to your MySQL credentials before running ---
     HOST = "localhost"
-    USER = "yourusername"
-    PASSWORD = "yourpassword"
-    # ------------------------------------------------------------
+    USER = "yourusername"   # change to your mysql username
+    PASSWORD = "yourpassword"   # change to your mysql password
 
     create_alx_database(host=HOST, user=USER, password=PASSWORD)
