@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import mysql.connector
-from mysql.connector import Error
 
 def create_alx_database(host="localhost", user="root", password="yourpassword"):
     conn = None
@@ -9,8 +8,8 @@ def create_alx_database(host="localhost", user="root", password="yourpassword"):
         # Connect to MySQL server
         conn = mysql.connector.connect(
             host=host,
-            user="root",
-            password="Mu,thi.ma@5196!"
+            user=user,
+            password=password
         )
 
         cursor = conn.cursor()
@@ -20,7 +19,7 @@ def create_alx_database(host="localhost", user="root", password="yourpassword"):
 
         print("Database 'alx_book_store' created successfully (or already exists).")
 
-    except Error as err:
+    except mysql.connector.Error as err:
         print("Error:", err)
 
     finally:
